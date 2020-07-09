@@ -19,7 +19,7 @@ AGun::AGun()
 
 void AGun::PullTrigger()
 {
-
+	UE_LOG(LogTemp, Warning, TEXT("Gun Fire!"));
 }
 
 // Called when the game starts or when spawned
