@@ -6,6 +6,8 @@
 #include "AIController.h"
 #include "ShooterAIController.generated.h"
 
+class UBehaviorTree;
+
 /**
  * 
  */
@@ -23,4 +25,9 @@ public:
 private:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, meta=(AllowPrivateAccess = "true"))
 	float AcceptanceRadius = 300.0f;
+
+	UPROPERTY(EditAnywhere)
+	UBehaviorTree* AIBehavior;
+
+
 };
