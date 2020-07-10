@@ -58,6 +58,11 @@ float AShooterCharacter::TakeDamage(
 	return DamageApplied;
 }
 
+float AShooterCharacter::GetHealth() const
+{
+	return Health;
+}
+
 void AShooterCharacter::MoveForward(float AxisValue)
 {
 	AddMovementInput(GetActorForwardVector() * AxisValue);

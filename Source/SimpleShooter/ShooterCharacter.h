@@ -36,6 +36,9 @@ public:
 		AActor* DamageCauser
 	) override;
 
+	UFUNCTION(BlueprintPure)
+	float GetHealth() const;
+
 private:
 	void MoveForward(float AxisValue);
 	void MoveRight(float AxisValue);
