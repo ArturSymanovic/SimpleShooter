@@ -25,7 +25,7 @@ void AShooterAIController::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	auto PlayerPawn = UGameplayStatics::GetPlayerPawn(GetWorld(), 0);
+	/*auto PlayerPawn = UGameplayStatics::GetPlayerPawn(GetWorld(), 0);
 	if (PlayerPawn == nullptr) return;
 	if (LineOfSightTo(PlayerPawn))
 	{
@@ -35,5 +35,5 @@ void AShooterAIController::Tick(float DeltaTime)
 	else
 	{
 		GetBlackboardComponent()->ClearValue(TEXT("PlayerLocation"));
-	}
+	}*/
 }

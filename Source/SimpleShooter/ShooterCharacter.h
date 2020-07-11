@@ -39,12 +39,12 @@ public:
 	UFUNCTION(BlueprintPure)
 	float GetHealth() const;
 
+	void Fire();
+
 private:
 	void MoveForward(float AxisValue);
 	void MoveRight(float AxisValue);
-	void Fire();
-
-
+	
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Health", meta=(AllowPrivateAccess = "true"))
 	float MaxHealth = 100.0f;
 
