@@ -35,7 +35,10 @@ void AGun::PullTrigger()
 
 	auto End = Location + Rotation.Vector() * MaxRange;
 	FHitResult HitResult;
-	bool bIsHitFound = GetWorld()->LineTraceSingleByChannel(HitResult, Location, End, ECC_GameTraceChannel1);
+	FCollisionQueryParams Params;
+	Params.AddIgnoredActor(OwningPawn);
+	Params.AddIgnoredActor(this);
+	bool bIsHitFound = GetWorld()->LineTraceSingleByChannel(HitResult, Location, End, ECC_GameTraceChannel1, Params);
 	if (bIsHitFound)
 	{
 		//DrawDebugPoint(GetWorld(), HitResult.Location, 5.f, FColor::Red, true);
