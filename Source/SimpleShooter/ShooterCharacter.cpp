@@ -3,7 +3,7 @@
 
 #include "ShooterCharacter.h"
 #include "Gun.h"
-
+#include "Components/CapsuleComponent.h"
 // Sets default values
 AShooterCharacter::AShooterCharacter()
 {
@@ -53,7 +53,13 @@ float AShooterCharacter::TakeDamage(
 {
 	float DamageApplied = Super::TakeDamage(DamageAmount, DamageEvent, EventInstigator, DamageCauser);
 	Health -= FMath::Clamp(DamageApplied, 0.0f, Health);
-	UE_LOG(LogTemp, Warning, TEXT("%s - Health Left: %f"), *GetName(), Health);
+	
+	if (IsDead())
+	{
+		DetachFromControllerPendingDestroy();
+		GetCapsuleComponent()->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+	}
+
 
 	return DamageApplied;
 }
@@ -61,6 +67,11 @@ float AShooterCharacter::TakeDamage(
 float AShooterCharacter::GetHealth() const
 {
 	return Health;
+}
+
+float AShooterCharacter::IsDead() const
+{
+	return Health <= 0.f;
 }
 
 void AShooterCharacter::MoveForward(float AxisValue)

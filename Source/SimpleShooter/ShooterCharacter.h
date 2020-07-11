@@ -39,6 +39,9 @@ public:
 	UFUNCTION(BlueprintPure)
 	float GetHealth() const;
 
+	UFUNCTION(BlueprintPure)
+	float IsDead() const;
+
 	void Fire();
 
 private:
