@@ -4,6 +4,8 @@
 #include "ShooterCharacter.h"
 #include "Gun.h"
 #include "Components/CapsuleComponent.h"
+#include "KillEmAllGameMode.h"
+
 // Sets default values
 AShooterCharacter::AShooterCharacter()
 {
@@ -58,6 +60,12 @@ float AShooterCharacter::TakeDamage(
 	{
 		DetachFromControllerPendingDestroy();
 		GetCapsuleComponent()->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+
+		auto GameMode = GetWorld()->GetAuthGameMode<AKillEmAllGameMode>();
+		if (GameMode!= nullptr)
+		{
+			GameMode->PawnKilled(this);
+		}
 	}
 
 
