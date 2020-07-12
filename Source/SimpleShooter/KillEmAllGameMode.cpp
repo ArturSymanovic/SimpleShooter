@@ -2,10 +2,15 @@
 
 
 #include "KillEmAllGameMode.h"
+#include "SimpleShooter_PlayerController.h"
 
 void AKillEmAllGameMode::PawnKilled(APawn* PawnKilled)
 {
 	Super::PawnKilled(PawnKilled);
 
-	UE_LOG(LogTemp, Warning, TEXT("%s killed"), *PawnKilled->GetName());
+	ASimpleShooter_PlayerController* PlayerController = Cast<ASimpleShooter_PlayerController>(PawnKilled->GetController());
+	if (PlayerController != nullptr)
+	{
+		PlayerController->GameHasEnded(nullptr, false);
+	}
 }

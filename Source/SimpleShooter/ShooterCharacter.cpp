@@ -58,14 +58,14 @@ float AShooterCharacter::TakeDamage(
 	
 	if (IsDead())
 	{
-		DetachFromControllerPendingDestroy();
-		GetCapsuleComponent()->SetCollisionEnabled(ECollisionEnabled::NoCollision);
-
 		auto GameMode = GetWorld()->GetAuthGameMode<AKillEmAllGameMode>();
 		if (GameMode!= nullptr)
 		{
 			GameMode->PawnKilled(this);
 		}
+
+		DetachFromControllerPendingDestroy();
+		GetCapsuleComponent()->SetCollisionEnabled(ECollisionEnabled::NoCollision);
 	}
 
 
