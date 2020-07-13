@@ -75,6 +75,11 @@ float AShooterCharacter::GetHealth() const
 	return Health;
 }
 
+float AShooterCharacter::GetHealthPercent() const
+{
+	return Health / MaxHealth;
+}
+
 bool AShooterCharacter::IsDead() const
 {
 	return Health <= 0.f;

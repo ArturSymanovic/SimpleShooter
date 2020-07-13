@@ -40,6 +40,9 @@ public:
 	float GetHealth() const;
 
 	UFUNCTION(BlueprintPure)
+	float GetHealthPercent() const;
+
+	UFUNCTION(BlueprintPure)
 	bool IsDead() const;
 
 	void Fire();
