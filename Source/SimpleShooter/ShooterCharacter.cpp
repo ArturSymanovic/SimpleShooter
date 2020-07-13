@@ -67,8 +67,6 @@ float AShooterCharacter::TakeDamage(
 		DetachFromControllerPendingDestroy();
 		GetCapsuleComponent()->SetCollisionEnabled(ECollisionEnabled::NoCollision);
 	}
-
-
 	return DamageApplied;
 }
 
