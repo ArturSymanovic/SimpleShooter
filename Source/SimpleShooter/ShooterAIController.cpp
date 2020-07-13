@@ -15,7 +15,6 @@ void AShooterAIController::BeginPlay()
 		RunBehaviorTree(AIBehavior);
 		auto PlayerPawn = UGameplayStatics::GetPlayerPawn(GetWorld(), 0);
 		if (PlayerPawn == nullptr) return;
-		//GetBlackboardComponent()->SetValueAsVector(TEXT("StartLocation"), GetPawn()->GetActorLocation());
 		GetBlackboardComponent()->SetValueAsVector(TEXT("PlayerLocation"), PlayerPawn->GetActorLocation());
 		GetBlackboardComponent()->SetValueAsVector(TEXT("LastKnownPlayerLocation"), PlayerPawn->GetActorLocation());
 	}
@@ -24,16 +23,14 @@ void AShooterAIController::BeginPlay()
 void AShooterAIController::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+}
 
-	/*auto PlayerPawn = UGameplayStatics::GetPlayerPawn(GetWorld(), 0);
-	if (PlayerPawn == nullptr) return;
-	if (LineOfSightTo(PlayerPawn))
+bool AShooterAIController::IsDead() const
+{
+	AShooterCharacter* ControlledCharacter = Cast<AShooterCharacter>(GetPawn());
+	if (ControlledCharacter != nullptr)
 	{
-		GetBlackboardComponent()->SetValueAsVector(TEXT("PlayerLocation"), PlayerPawn->GetActorLocation());
-		GetBlackboardComponent()->SetValueAsVector(TEXT("LastKnownPlayerLocation"), PlayerPawn->GetActorLocation());
+		return ControlledCharacter->IsDead();
 	}
-	else
-	{
-		GetBlackboardComponent()->ClearValue(TEXT("PlayerLocation"));
-	}*/
+	return true;
 }

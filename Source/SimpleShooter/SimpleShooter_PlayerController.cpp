@@ -9,10 +9,21 @@ void ASimpleShooter_PlayerController::GameHasEnded(class AActor* EndGameFocus /*
 {
 	Super::GameHasEnded(EndGameFocus, bIsWinner);
 	
-	UUserWidget* UserWidget = CreateWidget(this, LoseScreenClass);
-	if (UserWidget != nullptr)
+	if (bIsWinner)
 	{
-		UserWidget->AddToViewport();
+		UUserWidget* UserWidget = CreateWidget(this, WinScreenClass);
+		if (UserWidget != nullptr)
+		{
+			UserWidget->AddToViewport();
+		}
+	}
+	else
+	{
+		UUserWidget* UserWidget = CreateWidget(this, LoseScreenClass);
+		if (UserWidget != nullptr)
+		{
+			UserWidget->AddToViewport();
+		}
 	}
 
 	GetWorldTimerManager().SetTimer(RestartTimer, this, &ASimpleShooter_PlayerController::RestartLevel, RestartDelay);

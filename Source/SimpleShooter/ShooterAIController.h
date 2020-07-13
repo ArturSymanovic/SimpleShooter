@@ -21,7 +21,7 @@ protected:
 
 public:
 	virtual void Tick(float DeltaTime) override;
-
+	bool IsDead() const;
 private:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, meta=(AllowPrivateAccess = "true"))
 	float AcceptanceRadius = 300.0f;

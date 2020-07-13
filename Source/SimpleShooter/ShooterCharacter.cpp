@@ -77,7 +77,7 @@ float AShooterCharacter::GetHealth() const
 	return Health;
 }
 
-float AShooterCharacter::IsDead() const
+bool AShooterCharacter::IsDead() const
 {
 	return Health <= 0.f;
 }
