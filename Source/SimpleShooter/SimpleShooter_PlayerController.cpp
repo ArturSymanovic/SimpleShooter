@@ -25,7 +25,17 @@ void ASimpleShooter_PlayerController::GameHasEnded(class AActor* EndGameFocus /*
 			UserWidget->AddToViewport();
 		}
 	}
-
+	HudWidget->RemoveFromViewport();
 	GetWorldTimerManager().SetTimer(RestartTimer, this, &ASimpleShooter_PlayerController::RestartLevel, RestartDelay);
 
+}
+
+void ASimpleShooter_PlayerController::BeginPlay()
+{
+	Super::BeginPlay();
+	HudWidget = CreateWidget(this, HudClass);
+	if (HudWidget != nullptr)
+	{
+		HudWidget->AddToViewport();
+	}
 }
